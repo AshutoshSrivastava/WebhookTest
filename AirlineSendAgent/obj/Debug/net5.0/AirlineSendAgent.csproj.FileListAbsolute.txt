@@ -1,0 +1,16 @@
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.exe
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.deps.json
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.runtimeconfig.json
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.runtimeconfig.dev.json
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.dll
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\ref\AirlineSendAgent.dll
+F:\work\WebhooksTest\AirlineSendAgent\bin\Debug\net5.0\AirlineSendAgent.pdb
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.csproj.AssemblyReference.cache
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.GeneratedMSBuildEditorConfig.editorconfig
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.AssemblyInfoInputs.cache
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.AssemblyInfo.cs
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.csproj.CoreCompileInputs.cache
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.dll
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\ref\AirlineSendAgent.dll
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.pdb
+F:\work\WebhooksTest\AirlineSendAgent\obj\Debug\net5.0\AirlineSendAgent.genruntimeconfig.cache
