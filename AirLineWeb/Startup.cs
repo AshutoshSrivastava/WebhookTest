@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AirLineWeb.Data;
+using AirLineWeb.MessageBus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace AirLineWeb
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AirLineWeb", Version = "v1" });
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddSingleton<IMessageBusClient,MessageBusClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

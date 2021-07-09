@@ -1,6 +1,8 @@
+using System;
 using System.Linq;
 using AirLineWeb.Data;
 using AirLineWeb.Dtos;
+using AirLineWeb.MessageBus;
 using AirLineWeb.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,13 @@ namespace AirLineWeb.Controllers
     {
         private readonly IMapper _mapper;
         private readonly AirlineDbContext _context;
+        private readonly IMessageBusClient _messageBus;
 
-        public FlightsController(AirlineDbContext context, IMapper mapper)
+        public FlightsController(AirlineDbContext context, IMapper mapper, IMessageBusClient messageBus)
         {
             _mapper = mapper;
             _context = context;
+            _messageBus = messageBus;
         }
 
         [HttpGet("{flightCode}", Name = "GetFlightDetailByCode")]
@@ -64,15 +68,46 @@ namespace AirLineWeb.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateFlightDetail(int id, FlightDetailUpdateDto flightDetailUpdateDto)
         {
-            var flight = _context.FlightDetails.FirstOrDefault(f=>f.Id == id);
-            if(flight == null)
+            var flight = _context.FlightDetails.FirstOrDefault(f => f.Id == id);
+
+            if (flight == null)
             {
                 return NotFound();
             }
-            _mapper.Map(flightDetailUpdateDto,flight);
 
-            _context.SaveChanges();
-            return NoContent();
+            decimal oldPrice = flight.Price;
+
+            _mapper.Map(flightDetailUpdateDto, flight);
+
+            try
+            {
+
+                _context.SaveChanges();
+                if (oldPrice != flight.Price)
+                {
+                    Console.WriteLine("Price Changed - Please message on Bus");
+
+                    var message = new NotificationMessageDto{
+                        WebhookType = "pricechange",
+                        OldPrice = oldPrice,
+                        NewPrice = flight.Price,
+                        FlightCode = flight.FlightCode
+                    };
+                    _messageBus.SendMessage(message);
+                }
+                else
+                {
+                    Console.WriteLine("No Price Change");
+
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }
